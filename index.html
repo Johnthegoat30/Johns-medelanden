@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johns Meddelanden</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login/Registrering -->
+    <div id="auth-container" class="container active">
+        <h1>Johns Meddelanden</h1>
+        
+        <!-- Registreringsflik -->
+        <div id="register-tab" class="tab active">
+            <h2>Skapa ett konto</h2>
+            <form onsubmit="handleRegister(event)">
+                <input type="text" id="reg-username" placeholder="Användarnamn" required>
+                <input type="password" id="reg-password" placeholder="Lösenord" required>
+                <input type="password" id="reg-confirm-password" placeholder="Bekräfta lösenord" required>
+                <button type="submit">Registrera</button>
+            </form>
+            <p>Har du redan ett konto? <a href="#" onclick="toggleTab(event)">Logga in här</a></p>
+        </div>
+
+        <!-- Inloggningsflik -->
+        <div id="login-tab" class="tab">
+            <h2>Logga in</h2>
+            <form onsubmit="handleLogin(event)">
+                <input type="text" id="username" placeholder="Användarnamn" required>
+                <input type="password" id="password" placeholder="Lösenord" required>
+                <button type="submit">Logga in</button>
+            </form>
+            <p>Saknar du ett konto? <a href="#" onclick="toggleTab(event)">Registrera dig här</a></p>
+        </div>
+        
+        <div id="auth-message" class="message"></div>
+    </div>
+
+    <!-- Chat-gränssnitt -->
+    <div id="chat-container" class="container">
+        <div class="chat-header">
+            <h1>Johns Meddelanden</h1>
+            <p>Inloggad som: <strong id="current-user"></strong></p>
+            <button onclick="handleLogout()" class="logout-btn">Logga ut</button>
+        </div>
+
+        <div class="chat-content">
+            <div id="messages" class="messages"></div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="friend-username" placeholder="Vänens användarnamn" required>
+            <textarea id="message-input" placeholder="Skriv ditt meddelande..." required></textarea>
+            <button onclick="sendMessage()">Skicka</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
